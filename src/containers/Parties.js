@@ -1,42 +1,22 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Parties from '../components/Parties';
+import fetchParties from '../actions/partyActions';
 
-import Party from '../components/Party';
-import API from '../API';
+const mapStateToProps = (state) => ({
+    data: state,
+});
 
-class Parties extends Component {
-    state = {
-        isLoading: true,
-        parties: []
-    }
-
-    componentDidMount() {
-        API.getAllParties()
-            .then(parties => {
-                this.setState({
-                    parties: parties.data,
-                    isLoading: false
-                })
-            })
-            .catch(error => console.log(`Error: ${error}`));
-    }
-
-    render() {
-        return (
-            <div className="dashboard">
-                <div className="edit-board">
-                <h3>All Registered Parties</h3>
-                    {
-                        this.state.isLoading ? 
-                            <h3>Loading Parties...</h3> :
-                            this.state.parties.map(party => (
-                                <Party key={ party.id } party={ party } col={3} />
-                            ))
-                    }
-                </div>
-                    
-            </div>
-        );
+const matchDispatchToProps = (dispatch) => {
+    return {
+        fetchParties: () => {
+            dispatch(fetchParties())
+        }
     }
 }
 
-export default Parties;
+const PartiesContainer = connect(
+    mapStateToProps,
+    matchDispatchToProps,
+)(Parties)
+
+export default PartiesContainer;

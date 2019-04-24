@@ -1,6 +1,6 @@
-import API from './API';
+import API from '../API';
 
-export const fetchParties = () => {
+const fetchParties = () => {
     return ((dispatch) => {
         dispatch({type: 'GET_PARTIES'})
         API.getAllParties()
@@ -18,3 +18,5 @@ export const fetchParties = () => {
             });
     });
 }
+
+export default fetchParties;
