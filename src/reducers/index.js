@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-
-import PartiesReducer from './reducer-parties';
+import parties from './partyReducer';
 
 const allReducers = combineReducers({
-    parties: PartiesReducer
+    parties,
 });
 
 export default allReducers;
