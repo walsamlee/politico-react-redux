@@ -1,19 +1,12 @@
 import React from 'react';
-
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAt, faUser, faArchive, faUsers, faBuilding, faBriefcase } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faAt);
-library.add(faArchive);
-library.add(faUsers);
-library.add(faBuilding);
-library.add(faBriefcase);
-library.add(faUser);
-
+import banner from '../indexbg.jpg';
 
 const Landing = () => (
-    <div className="homepage">
+    <div>
+        <div className="center-img">
+            <img src={banner} alt="" />
+        </div> 
+        <div className="homepage">
             <div className="sect1">
                 <h2>Our Service</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -27,7 +20,7 @@ const Landing = () => (
             <div className="sect2">
                 <div className="col-3">
                     <div className="sect-title">
-                        <h1><FontAwesomeIcon icon="at" /></h1>
+                        <h1><i className="fas fa-at"></i></h1>
                         <h4>About Us</h4>
                     </div>
                     <div className="sect-body">
@@ -39,7 +32,7 @@ const Landing = () => (
                 </div>
                 <div className="col-3">
                     <div className="sect-title">
-                        <h1><FontAwesomeIcon icon="archive" /></h1>
+                        <h1><i className="fas fa-archive"></i></h1>
                         <h4>Elections</h4>
                     </div>
                     <div className="sect-body">
@@ -51,7 +44,7 @@ const Landing = () => (
                 </div>
                 <div className="col-3">
                     <div className="sect-title">
-                        <h1><FontAwesomeIcon icon="users" /></h1>
+                        <h1><i className="fas fa-users"></i></h1>
                         <h4>Users</h4>
                     </div>
                     <div className="sect-body">
@@ -63,7 +56,7 @@ const Landing = () => (
                 </div>
                 <div className="col-3">
                     <div className="sect-title">
-                        <h1><FontAwesomeIcon icon="building" /></h1>
+                        <h1><i className="fas fa-building"></i></h1>
                         <h4>Parties</h4>
                     </div>
                     <div className="sect-body">
@@ -75,7 +68,7 @@ const Landing = () => (
                 </div>
                 <div className="col-3">
                     <div className="sect-title">
-                        <h1><FontAwesomeIcon icon="briefcase" /></h1>
+                        <h1><i className="fas fa-briefcase"></i></h1>
                         <h4>Offices</h4>
                     </div>
                     <div className="sect-body">
@@ -87,7 +80,7 @@ const Landing = () => (
                 </div>
                 <div className="col-3">
                     <div className="sect-title">
-                        <h1><FontAwesomeIcon icon="user" /></h1>
+                        <h1><i className="fab fa-angellist"></i></h1>
                         <h4>Candidates</h4>
                     </div>
                     <div className="sect-body">
@@ -96,6 +89,7 @@ const Landing = () => (
                             perferendis eius incidunt magni eaque modi, accusamus fugiat.
                         </p>
                     </div>
+                </div>
             </div>
         </div>
     </div>
