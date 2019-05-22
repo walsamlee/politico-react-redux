@@ -1,19 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getPrivilege } from '../utils/getPrivilege';
 
-const Party = ({ party, col }) => (
-    <div className={`col-${col}`}>
-        <div className="party">
-            <div className="party-logo">
-                <img src={ party.logoUrl } alt="Party Logo" />
+const Party = ({ party, }) => {
+    const privilege = getPrivilege();
+    if(privilege === 'true') {
+        return (
+                <div className="party">
+                    <div className="party-logo">
+                        <img src={ party.logoUrl } alt="Party Logo" />
+                    </div>
+                    <h3>{ party.name }</h3>
+                    {
+                        <div>
+                            <Link to={`/editparty/${party.id}`} className="btn btn-cart">Edit</Link>
+                            <Link to={`/deleteparty/${party.id}`} className="btn btn-cart">Delete</Link>
+                        </div>
+                    }                    
+               </div>
+        );
+    }
+    return (
+            <div className="party">
+                <div className="party-logo">
+                    <img src={ party.logoUrl } alt="Party Logo" />
+                </div>
+                <h3>{ party.name }</h3>             
             </div>
-            <h3>{ party.name }</h3>
-            {
-                col === 3 ? <Link to={`/parties/${party.id}`} className="btn btn-cart">View</Link> : ""
-            }
-            
-        </div>
-    </div>
-);
+    );
+};
 
 export default Party;

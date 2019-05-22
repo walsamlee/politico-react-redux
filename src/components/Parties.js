@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
+import Loader from '../utils/Loader';
 import Party from '../components/Party';
 
-class Parties extends Component {
-    constructor(props) {
-        super(props);
-        this.componentDidMount = this.componentDidMount.bind(this);
-    }
+class Parties extends Component {    
     componentDidMount() {
         this.props.fetchParties();
     }
@@ -14,13 +11,15 @@ class Parties extends Component {
         return (
             <div className="dashboard">
                 <div className="edit-board">
-                    {
-                        data.parties.fetching ?
-                        <h3>Loading Parties...</h3> :
-                        data.parties.parties.map(party => (
-                            <Party key={ party.id } party={ party } col={3} />
-                        ))
-                    }
+                    <div className="party-view">
+                        {
+                            data.parties.fetching ?
+                            <Loader /> :
+                            data.parties.parties.map(party => (
+                                <Party key={ party.id } party={ party } />
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
         )
