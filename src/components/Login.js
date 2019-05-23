@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from '../utils/Loader';
 import logo from '../politico.png';
 
 class Login extends Component {
@@ -24,17 +25,25 @@ class Login extends Component {
     }
 
     render() {
-        const { data } = this.props;
-        const { user } = data.login;
+        let loggedInUser = {
+            fetching: false,
+            user: [],
+        };
 
-        if(user.length > 0) {
-            localStorage.setItem('token', user[0].token);
-            localStorage.setItem('who', user[0].user.isAdmin);
+        const { data } = this.props;
+
+        loggedInUser = data.login;
+
+        if(loggedInUser.user.length > 0) {
+            localStorage.setItem('token', loggedInUser.user[0].token);
+            localStorage.setItem('who', loggedInUser.user[0].user.isAdmin);
+            
             window.location = '/parties';
         }
 
         return (
             <div className="sign-in-page">
+                {loggedInUser.fetching ? <Loader /> : ''}
                 <div className="sign-in">
                     <div className="signin-logo">
                         <img src={logo} alt="brand-logo"/>

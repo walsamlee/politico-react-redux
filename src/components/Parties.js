@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Loader from '../utils/Loader';
-import Party from '../components/Party';
+import Party from './Party';
 
 class Parties extends Component {    
     componentDidMount() {
